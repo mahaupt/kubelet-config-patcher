@@ -28,7 +28,11 @@ def getKubeletConfig():
     print("Get kubeletconfig")
     ls_proxy=subprocess.Popen(["kubectl", "proxy", "--port=8002"])
     time.sleep(5) # wait for proxy to establish
-    r=requests.get("http://localhost:8002/api/v1/nodes/" + nodes[0] + "/proxy/configz")
+    r=False
+    try:
+        r=requests.get("http://localhost:8002/api/v1/nodes/" + nodes[0] + "/proxy/configz")
+    except Exception:
+        ls_proxy.terminate()
     ls_proxy.terminate()
 
     if (r.status_code != 200):
