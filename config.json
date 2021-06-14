@@ -1,0 +1,8 @@
+{
+    "evictionHard": {
+        "imagefs.available": "15%",  
+        "memory.available": "100Mi", 
+        "nodefs.available": "10%",   
+        "nodefs.inodesFree": "5%"
+      }
+}
